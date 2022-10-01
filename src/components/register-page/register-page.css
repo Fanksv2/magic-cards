@@ -1,0 +1,19 @@
+.register-page {
+    display: flex;
+    justify-content: center;
+}
+
+.register-page-content {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 40%;
+}
+
+.register-page-content h1 {
+    margin-bottom: 20px;
+}
+
+.register-page-content input {
+    margin-bottom: 10px;
+}

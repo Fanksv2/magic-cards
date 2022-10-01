@@ -1,0 +1,28 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+}
+
+.login-page-content {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 40%;
+}
+
+.login-page-content h1 {
+    margin-bottom: 20px;
+}
+
+.login-page-content input {
+    margin-bottom: 10px;
+}
+
+.button {
+    align-self: flex-start;
+    width: 40%;
+}
+
+.button {
+    margin-bottom: 10px;
+}
