@@ -24,9 +24,7 @@ function LoginPage() {
         );
         const valid = validateLogin(dataSaved);
         if (valid) {
-            alert("valid");
-        } else {
-            alert("non valid");
+            window.localStorage.setItem("isAuthenticated", true);
         }
     };
 

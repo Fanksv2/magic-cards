@@ -1,0 +1,11 @@
+.search {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.search input {
+    width: 100%;
+}
