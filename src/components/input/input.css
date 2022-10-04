@@ -1,0 +1,29 @@
+.input {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.input input {
+    width: 300px;
+}
+
+.input img {
+    height: auto;
+    width: 20px;
+}
+
+.input .message {
+    width: 23px;
+    position: relative;
+}
+
+.input .error-message {
+    position: absolute;
+    left: 0;
+    top: -6px;
+    font-size: 13px;
+    width: 250px;
+    color: red;
+}

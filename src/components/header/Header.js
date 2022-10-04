@@ -1,7 +1,16 @@
 import "./header.css";
 import UserContext from "../../context/UserContext";
+import Button from "../button/Button";
+import { useContext } from "react";
 
 function Header() {
+    const { userData, setUserData } = useContext(UserContext);
+
+    function logout() {
+        window.localStorage.setItem("isAuthenticated", false);
+        setUserData({ isAuthenticated: false });
+    }
+
     return (
         <div className="header">
             <h1>Magic Cards</h1>
@@ -9,8 +18,8 @@ function Header() {
                 {({ userData }) => {
                     return userData.isAuthenticated ? (
                         <div className="userInfo">
-                            <p>Name</p>
-                            <button>Logout</button>
+                            <p>{userData.name}</p>
+                            <button onClick={logout}>Logout</button>
                         </div>
                     ) : null;
                 }}

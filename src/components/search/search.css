@@ -1,9 +1,16 @@
 .search {
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.search form {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     gap: 10px;
-    justify-content: space-between;
+    width: 500px;
+    align-self: center;
+    margin-bottom: 20px;
 }
 
 .search input {

@@ -1,9 +1,9 @@
 import "./button.css";
 
-function Button({ title, onclick }) {
+function Button({ className, title, onclick, disabled }) {
     return (
-        <div>
-            <button className="button" onClick={onclick}>
+        <div className={className}>
+            <button className="button" onClick={onclick} disabled={disabled}>
                 {title}
             </button>
         </div>

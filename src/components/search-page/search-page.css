@@ -9,6 +9,18 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
-    width: 40%;
+    width: 80%;
     min-width: 300px;
+}
+
+.search-page-content input {
+    padding: 5px 15px;
+    font-size: 16px;
+}
+
+.search-page-content .cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    justify-content: center;
 }

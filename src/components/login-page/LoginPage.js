@@ -1,10 +1,16 @@
 import Button from "../button/Button";
 import "./loginpage.css";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { userData, setUserData } = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     function validateLogin(dataSaved) {
         if (dataSaved.email !== email) {
@@ -25,11 +31,12 @@ function LoginPage() {
         const valid = validateLogin(dataSaved);
         if (valid) {
             window.localStorage.setItem("isAuthenticated", true);
+            setUserData({ isAuthenticated: true });
         }
     };
 
     const onClickRegister = () => {
-        alert("register");
+        navigate("/register");
     };
 
     const onChangeEmail = (e) => {
@@ -49,6 +56,7 @@ function LoginPage() {
                 <p>Password</p>
                 <input className="password" onChange={onChangePassword}></input>
                 <Button title="Login" onclick={onClickLogin} />
+                <p>Não tem cadastro?</p>
                 <Button title="Register" onclick={onClickRegister} />
             </div>
         </div>
