@@ -7,8 +7,8 @@ function Header() {
     const { userData, setUserData } = useContext(UserContext);
 
     function logout() {
-        window.localStorage.setItem("isAuthenticated", false);
-        setUserData({ isAuthenticated: false });
+        window.localStorage.setItem("token", "");
+        setUserData({ token: "" });
     }
 
     return (
@@ -16,9 +16,9 @@ function Header() {
             <h1>Magic Cards</h1>
             <UserContext.Consumer>
                 {({ userData }) => {
-                    return userData.isAuthenticated ? (
+                    return userData.token ? (
                         <div className="userInfo">
-                            <p>{userData.name}</p>
+                            {/* <p>{userData.name}</p> */}
                             <button onClick={logout}>Logout</button>
                         </div>
                     ) : null;

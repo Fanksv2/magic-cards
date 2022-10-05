@@ -3,6 +3,7 @@ import "./loginpage.css";
 import React, { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import LoginApi from "../../control/LoginApi";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -12,28 +13,20 @@ function LoginPage() {
 
     const navigate = useNavigate();
 
-    function validateLogin(dataSaved) {
-        if (dataSaved.email !== email) {
-            return false;
+    const onClickLogin = async () => {
+        const res = await LoginApi.loginUser(email, password);
+        if (res.status === LoginApi.OK) {
+            window.localStorage.setItem("token", res.token);
+            setUserData({ token: res.token });
+        } else {
+            alert("Error. Review your credentials and try again");
         }
 
-        if (dataSaved.password !== password) {
-            return false;
-        }
-
-        return true;
-    }
-
-    const onClickLogin = () => {
-        const dataSaved = JSON.parse(
-            window.localStorage.getItem("register-data")
-        );
-        const valid = validateLogin(dataSaved);
-        if (valid) {
-            window.localStorage.setItem("isAuthenticated", true);
-            setUserData({ isAuthenticated: true });
-        }
+        console.log(res);
     };
+
+    //eve.holt@reqres.in
+    // window.localStorage.getItem("register-data")
 
     const onClickRegister = () => {
         navigate("/register");

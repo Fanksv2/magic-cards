@@ -14,3 +14,8 @@
 .card img {
     height: 300px;
 }
+
+.card img:hover {
+    transition: 0.3s;
+    transform: scale(1.5);
+}

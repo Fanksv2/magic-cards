@@ -9,13 +9,13 @@ import LoginPage from "./components/login-page/LoginPage";
 import CachedData from "./control/CachedData";
 
 function isAuthenticated() {
-    let isAuth = window.localStorage.getItem("isAuthenticated") === "true";
+    let isAuth = window.localStorage.getItem("token");
     return isAuth;
 }
 
 function App() {
     const [userData, setUserData] = useState({
-        isAuthenticated: isAuthenticated(),
+        token: isAuthenticated(),
         name: CachedData.getName(),
     });
 
@@ -26,7 +26,7 @@ function App() {
                     <Header />
                     <UserContext.Consumer>
                         {({ userData }) => {
-                            return userData.isAuthenticated ? (
+                            return !!userData.token ? (
                                 <SearchPage />
                             ) : (
                                 <Routes>

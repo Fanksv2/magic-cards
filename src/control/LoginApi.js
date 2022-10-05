@@ -1,12 +1,25 @@
 class LoginApi {
     static BASE_URL = "https://reqres.in/api";
+
     static POST = "POST";
+
     static REGISTER = "register";
+    static LOGIN = "login";
+
     static OK = 200;
 
     static async registerUser(name, email, password) {
         const res = await this.request(this.POST, this.REGISTER, {
             name,
+            email,
+            password,
+        });
+
+        return res;
+    }
+
+    static async loginUser(email, password) {
+        const res = await this.request(this.POST, this.LOGIN, {
             email,
             password,
         });
