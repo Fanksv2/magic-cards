@@ -1,0 +1,39 @@
+.toast {
+    position: fixed;
+    display: flex;
+    top: 60px;
+    right: 0;
+    width: 250px;
+    height: 100px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 12px;
+    align-items: stretch;
+
+    animation: fadeIn 1.5s;
+}
+
+.toast-content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 15px 0;
+}
+
+.toast-content button {
+    width: 100px;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
