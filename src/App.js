@@ -16,12 +16,13 @@ function isAuthenticated() {
 function App() {
     const [userData, setUserData] = useState({
         token: isAuthenticated(),
-        name: CachedData.getName(),
     });
+
+    console.log("teste");
 
     return (
         <UserContext.Provider value={{ userData, setUserData }}>
-            <BrowserRouter>
+            <BrowserRouter basename={window.location.pathname || ""}>
                 <div className="App">
                     <Header />
                     <UserContext.Consumer>
