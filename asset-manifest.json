@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/magic-cards/static/css/main.6d6f1799.css",
-    "main.js": "/magic-cards/static/js/main.4d0318ee.js",
+    "main.js": "/magic-cards/static/js/main.b6eace59.js",
     "static/media/check.png": "/magic-cards/static/media/check.a2ff81a1e0ec4c7382b5.png",
     "index.html": "/magic-cards/index.html",
     "main.6d6f1799.css.map": "/magic-cards/static/css/main.6d6f1799.css.map",
-    "main.4d0318ee.js.map": "/magic-cards/static/js/main.4d0318ee.js.map"
+    "main.b6eace59.js.map": "/magic-cards/static/js/main.b6eace59.js.map"
   },
   "entrypoints": [
     "static/css/main.6d6f1799.css",
-    "static/js/main.4d0318ee.js"
+    "static/js/main.b6eace59.js"
   ]
 }
