@@ -19,8 +19,17 @@ function SearchPage() {
     }
 
     async function onSearch(text) {
+        const params = {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                auth: window.localStorage.getItem("token"),
+            },
+        };
+
         const data = await fetch(
-            `https://api.magicthegathering.io/v1/cards/?name=${text}`
+            `https://api.magicthegathering.io/v1/cards/?name=${text}`,
+            params
         ).then((res) => res.json());
 
         const filteredCards = filterCards(data.cards);

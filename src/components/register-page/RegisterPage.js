@@ -9,6 +9,7 @@ function RegisterPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [admin, setAdmin] = useState(false);
     const [IsValidInputs, setIsValidInputs] = useState(false);
     const [validFields, setValidFields] = useState({});
 
@@ -35,7 +36,7 @@ function RegisterPage() {
     }
 
     const onClickRegister = async () => {
-        const res = await LoginApi.registerUser(name, email, password);
+        const res = await LoginApi.registerUser(name, email, password, admin);
 
         if (res.status === LoginApi.OK) {
             alert("Cadastrado com sucesso");
@@ -69,6 +70,10 @@ function RegisterPage() {
         setIsValidInputs(validInputs);
     };
 
+    const onChangeAdmin = (e) => {
+        setAdmin(e.target.checked);
+    };
+
     return (
         <div className="register-page">
             <div className="register-page-content">
@@ -98,6 +103,14 @@ function RegisterPage() {
                     placeholder="Password..."
                     type="password"
                 ></Input>
+                <div className="admin">
+                    <input
+                        type="checkbox"
+                        name="admin"
+                        onChange={onChangeAdmin}
+                    />
+                    <label>Admin?</label>
+                </div>
                 <Button
                     title="Register"
                     onclick={onClickRegister}

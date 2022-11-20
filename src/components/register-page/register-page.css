@@ -14,6 +14,16 @@
     margin-bottom: 20px;
 }
 
-.register-page-content input {
+.register-page-content .input input {
     margin-bottom: 10px;
+}
+
+.register-page-content .admin {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.register-page-content .admin label {
+    font-size: 13px;
 }

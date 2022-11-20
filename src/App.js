@@ -18,8 +18,6 @@ function App() {
         token: isAuthenticated(),
     });
 
-    console.log("teste");
-
     return (
         <UserContext.Provider value={{ userData, setUserData }}>
             <BrowserRouter basename={window.location.pathname || ""}>
