@@ -3,11 +3,14 @@ import RegisterPage from "./components/register-page/RegisterPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "./components/search-page/SearchPage";
 import Header from "./components/header/Header";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserContext from "./context/UserContext";
 import LoginPage from "./components/login-page/LoginPage";
 import CachedData from "./control/CachedData";
 import AdminPage from "./components/admin-page/AdminPage";
+import LoginApi from "./control/LoginApi";
+
+const BASE_URL = "http://localhost:3030/auth/user";
 
 function isAuthenticated() {
     let isAuth = window.localStorage.getItem("token");
@@ -15,12 +18,36 @@ function isAuthenticated() {
 }
 
 function App() {
-    const [userData, setUserData] = useState({
-        token: isAuthenticated(),
-    });
+    const [userData, setUserData] = useState({ token: isAuthenticated() });
+
+    async function getData() {
+        const params = {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                auth: window.localStorage.getItem("token"),
+            },
+        };
+
+        let status;
+        const data = await fetch(BASE_URL, params).then(async (res) => {
+            status = res.status;
+            return await res.json();
+        });
+
+        if (status === LoginApi.OK) {
+            setUserData({ ...userData, ...data });
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, []);
 
     return (
-        <UserContext.Provider value={{ userData, setUserData }}>
+        <UserContext.Provider
+            value={{ userData, setUserData, refreshData: getData }}
+        >
             <BrowserRouter basename={window.location.pathname || ""}>
                 <div className="App">
                     <Header />
@@ -30,12 +57,12 @@ function App() {
                                 <Routes>
                                     <Route
                                         element={<SearchPage />}
-                                        path="/ss"
+                                        path="/"
                                         exact
                                     />
                                     <Route
                                         element={<AdminPage />}
-                                        path="/"
+                                        path="/admin"
                                         exact
                                     />
                                 </Routes>

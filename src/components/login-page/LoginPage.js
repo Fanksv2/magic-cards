@@ -12,7 +12,7 @@ function LoginPage() {
     const [password, setPassword] = useState("");
     const [toastVisible, setToastVisible] = useState(false);
 
-    const { userData, setUserData } = useContext(UserContext);
+    const { userData, setUserData, refreshData } = useContext(UserContext);
     const [validFields, setValidFields] = useState({});
 
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ function LoginPage() {
         const res = await LoginApi.loginUser(email, password);
         if (res.status === LoginApi.OK) {
             window.localStorage.setItem("token", res.token);
-            setUserData({ token: res.token });
+            setUserData({ token: res.token, admin: res.admin, name: res.name });
         } else {
             setToastVisible(true);
         }
