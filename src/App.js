@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import UserContext from "./context/UserContext";
 import LoginPage from "./components/login-page/LoginPage";
 import CachedData from "./control/CachedData";
+import AdminPage from "./components/admin-page/AdminPage";
 
 function isAuthenticated() {
     let isAuth = window.localStorage.getItem("token");
@@ -26,7 +27,18 @@ function App() {
                     <UserContext.Consumer>
                         {({ userData }) => {
                             return !!userData.token ? (
-                                <SearchPage />
+                                <Routes>
+                                    <Route
+                                        element={<SearchPage />}
+                                        path="/ss"
+                                        exact
+                                    />
+                                    <Route
+                                        element={<AdminPage />}
+                                        path="/"
+                                        exact
+                                    />
+                                </Routes>
                             ) : (
                                 <Routes>
                                     <Route

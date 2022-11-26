@@ -1,0 +1,29 @@
+.admin-page {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-page-content {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 400px;
+}
+
+.admin-page-content h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-page-content p {
+    margin-bottom: 5px;
+}
+
+.admin-page-content input {
+    margin-bottom: 10px;
+}
+
+.admin-page-content button {
+    margin-top: 30px;
+    width: 30%;
+}
