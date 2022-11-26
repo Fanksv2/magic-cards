@@ -21,28 +21,28 @@ function AdminPage() {
     }
 
     async function onClickSave(e) {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("image", image);
+
         const params = {
             method: "POST",
             headers: {
-                "Content-type": "application/json; charset=UTF-8",
                 auth: window.localStorage.getItem("token"),
             },
-            body: JSON.stringify({
-                name,
-                image,
-            }),
+            body: formData,
         };
 
         let status;
         const data = await fetch(BASE_URL, params).then(async (res) => {
             status = res.status;
-            return await res.json();
+            return await res.text();
         });
 
         if (status === LoginApi.OK) {
             setToastMessage("Saved Successfully");
         } else {
-            setToastMessage("Invalid Credentials");
+            setToastMessage("Some fields are empty or invalid credentials");
         }
 
         setToastVisible(true);

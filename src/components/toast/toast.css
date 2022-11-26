@@ -11,6 +11,7 @@
     border: 3px solid white;
     border-radius: 12px;
     align-items: stretch;
+    padding: 10px;
 
     animation: fadeIn 1.5s;
 }

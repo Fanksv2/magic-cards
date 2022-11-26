@@ -3,16 +3,17 @@ import Card from "../card/Card";
 import Search from "../search/Search";
 import "./search-page.css";
 
+const BASE_URL = "http://localhost:3030/cards";
+const BASE_URL_IMAGES = "http://localhost:3030/";
+
 function SearchPage() {
     const [cards, setCards] = useState([]);
 
     function filterCards(cards) {
-        const filteredCards = cards.filter((card) => {
-            if (!card.imageUrl) {
-                return false;
-            }
+        const filteredCards = cards.map((card) => {
+            const imageUrl = BASE_URL_IMAGES + card._id + ".png";
 
-            return true;
+            return { ...card, imageUrl };
         });
 
         return filteredCards.slice(0, 10);
@@ -27,12 +28,11 @@ function SearchPage() {
             },
         };
 
-        const data = await fetch(
-            `https://api.magicthegathering.io/v1/cards/?name=${text}`,
-            params
-        ).then((res) => res.json());
+        const data = await fetch(`${BASE_URL}/?name=${text}`, params).then(
+            (res) => res.json()
+        );
 
-        const filteredCards = filterCards(data.cards);
+        const filteredCards = filterCards(data);
 
         setCards(filteredCards);
     }
@@ -47,7 +47,7 @@ function SearchPage() {
                             <Card
                                 name={element.name}
                                 url={element.imageUrl}
-                                key={element.id}
+                                key={element._id}
                             />
                         );
                     })}

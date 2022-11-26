@@ -15,6 +15,11 @@
     margin-bottom: 20px;
 }
 
+.admin-page-content form {
+    display: flex;
+    flex-direction: column;
+}
+
 .admin-page-content p {
     margin-bottom: 5px;
 }
