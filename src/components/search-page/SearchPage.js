@@ -3,20 +3,14 @@ import Card from "../card/Card";
 import Search from "../search/Search";
 import "./search-page.css";
 
-const BASE_URL = "http://localhost:3030/cards";
-const BASE_URL_IMAGES = "http://localhost:3030/";
+const BASE_URL = `${process.env.REACT_APP_URL_BACKEND}/cards`;
+const BASE_URL_IMAGES = process.env.REACT_APP_URL_BACKEND;
 
 function SearchPage() {
     const [cards, setCards] = useState([]);
 
     function filterCards(cards) {
-        const filteredCards = cards.map((card) => {
-            const imageUrl = BASE_URL_IMAGES + card._id + ".png";
-
-            return { ...card, imageUrl };
-        });
-
-        return filteredCards.slice(0, 10);
+        return cards.slice(0, 10);
     }
 
     async function onSearch(text) {
@@ -46,7 +40,7 @@ function SearchPage() {
                         return (
                             <Card
                                 name={element.name}
-                                url={element.imageUrl}
+                                url={element.url}
                                 key={element._id}
                             />
                         );

@@ -10,7 +10,7 @@ import CachedData from "./control/CachedData";
 import AdminPage from "./components/admin-page/AdminPage";
 import LoginApi from "./control/LoginApi";
 
-const BASE_URL = "http://localhost:3030/auth/user";
+const BASE_URL = `${process.env.REACT_APP_URL_BACKEND}/auth/user`;
 
 function isAuthenticated() {
     let isAuth = window.localStorage.getItem("token");
