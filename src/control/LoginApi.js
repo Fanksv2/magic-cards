@@ -1,5 +1,5 @@
 class LoginApi {
-    static BASE_URL = "http://localhost:3030/auth";
+    static BASE_URL = `${process.env.REACT_APP_URL_BACKEND}/auth`;
 
     static POST = "POST";
 

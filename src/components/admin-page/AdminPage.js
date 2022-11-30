@@ -4,7 +4,7 @@ import LoginApi from "../../control/LoginApi";
 import Toast from "../toast/Toast";
 import "./admin-page.css";
 
-const BASE_URL = "http://localhost:3030/admin";
+const BASE_URL = `${process.env.REACT_APP_URL_BACKEND}/admin`;
 
 function AdminPage() {
     const [name, setName] = useState("");
